@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+    {%load static%}
+{% block title %} Login {% endblock title %}
+    {% block body %}
+    
+        <div class="container" style="display: inline;">
+            <div class="row mt-5">
+                <div class="col-4"></div>
+                <div class="col-4 text-center mt-5 pl-5 pr-5 bg-light" style="border-radius: 5px;">
+                    <h1 class="check1 mb-4 undr pt-5" style="color: black;"> Sign in</h1>
+                    <hr class="bg-dark">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="email" style="font-size:16px;" class="url mb-3 mt-4 text-center" name="email" placeholder="Email" required>
+
+
+                        <input type="password" style="font-size:16px ;" name="password" id="" class="url text-center mb-2" placeholder="Password" required>
+                        <p class="ch" style="color: red;"> {%if formpost%}
+                            Email or Password is Incorrect
+                            {% endif %}
+                        </p>
+                        
+                       
+                        <input type="submit" class="newbtn ml-1 mt-2" value="Log in">
+                    </form>
+
+                    <a href="{% url 'forgot' %}"><h5 class="undr ch">Forgot Password
+                    </h5></a>
+
+                    
+                </div>
+    
+
+    <div class="container-fluid">
+        <div class="row mt-5 mb-5">
+            <div class="col-4"></div>
+            <div class="col-4 text-center mt-5 pl-5 pr-5 bg-light" style="border-radius: 5px;">
+                <h1 class="check1 mb-4 undr pt-5" style="color: black"> register</h1>
+                <hr class="bg-dark">
+                <form action="{% url 'reg' %}" method="post">
+                  <input type="text" style="font-size:16px ;" class="url mb-3 mt-4 text-center" name="name" placeholder="Name" required>
+                    <input type="email" style="font-size:16px ;" class="url mb-3 text-center" name="email" placeholder="Email" required>
+
+                    <input type="password" style="font-size:16px ;" name="pass" id="d" class="url text-center mb-3" placeholder="Password" required>
+                    <input type="password" style="font-size:16px ;" name="pass1" id="d1" class="url text-center mb-3" placeholder="Confirm Password" required>
+                    <select class="url text-center mb-3" style="font-size:16px ;"  placeholder="Gender" name="gender" required>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                  </select>
+                  <select class="url text-center mb-3" style="font-size:16px ;" name="country" required>
+                    <option value="India">India</option>
+                    <option value="US">US</option>
+                    <option value="Other">Other</option>
+                </select>
+                        {% csrf_token %}
+
+                        <label for="avatar" class="ch">Choose a profile picture:</label>
+
+                            <input class="ch" type="file"
+                            id="avatar" name="avatar"
+                            accept="image/png, image/jpeg, image/jpg">
+
+                    <input type="submit" class="newbtn ml-1 mt-2" value="Register">
+                </form>
+                <p class="text-danger">{{s}}</p>
+                
+            </div>
+
+        </div>
+        </div>
+{% endblock body %}

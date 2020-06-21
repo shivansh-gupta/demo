@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+    {%load static%}
+{% block title %} Login {% endblock title %}
+    {% block body %}
+    
+        <div class="container" style="display: inline;">
+            <div class="row mt-5">
+                <div class="col-4"></div>
+                <div class="col-4 text-center mt-5 pl-5 pr-5 bg-light" style="border-radius: 5px;">
+                    <h1 class="check1 mb-4 undr pt-5" style="color: black"> Forgot Password</h1>
+                    <hr class="bg-dark">
+                    <form action="{% url 'forgot' %}" method="post">
+                        {% csrf_token %}
+                        <input type="email" style="font-size:16px ;" class="url mb-3 mt-4 text-center" name="email" placeholder="Email" required>
+                        <p class="ch" style="color: red;"> {% if c %} 
+                            {{s}}
+                            {% endif %}
+                        </p>
+                       
+                        <input type="submit" class="newbtn ml-1 mt-2" value="Enter">
+                    </form>
+
+                    <a href={% url 'login' %}><h5 class="undr ch">Back to login
+                    </h5></a>
+
+                    
+                </div>
+{% endblock body %}
